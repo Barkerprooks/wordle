@@ -2,7 +2,6 @@
 
 from sys import argv
 from random import choice
-from string import ascii_lowercase as alpha
 
 IN = "[WORDLE ATTEMPT %s/6] guess a 5-letter word: "
 G = "\033[30m\033[42m"
@@ -45,7 +44,7 @@ def main(args):
             print("not a valid 5 letter word")
        
         answer = answer_word(word, wordle)
-        if len(list(filter(lambda x: x[1] != G, answer))) == 5:
+        if list(filter(lambda x: x[1], answer)).count(G) == 5:
             print("you win! the word was:", wordle)
             return 0
 
